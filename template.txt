@@ -1,0 +1,24 @@
+#include <iostream>
+#include <vector>
+#include <set>
+#include <algorithm>
+#include <cstdio>
+#include <cmath>
+#include <string>
+#include <map>
+#include <utility>
+#include <sstream>
+
+using namespace std;
+#define ll long long int
+#define pll pair<long long, long long>
+#define pb push_back
+#define mp make_pair
+#define MOD 1000000007
+#define en "\n"
+#define vll vector <pll> 
+
+int main() {
+	// your code goes here
+	return 0;
+}

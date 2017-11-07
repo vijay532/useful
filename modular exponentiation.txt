@@ -1,0 +1,15 @@
+ll modexpo(ll base,ll expo,ll m)
+{
+	ll result = 1;
+	
+	while(expo>0)
+	{
+		if(expo&1)
+			result = (result*base)%m;
+		
+		base = (base*base)%m;
+		expo = expo>>1;
+	}
+	
+	return result;
+}

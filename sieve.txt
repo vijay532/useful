@@ -1,0 +1,18 @@
+ll t,m,n,i,j;
+ll prime[100000] = {0};
+ll primeno[10000];
+ 
+//prime generator 
+ll u = 0;
+for(ll r1=2;r1<=100000;r1++)
+{
+    if(prime[r1]==0)
+    {
+        for(ll r2=2;r2*r1<=100000;r2++)
+        {
+            prime[r1*r2] = 1;
+        }
+            
+        primeno[u++] = r1;
+    }
+}

@@ -1,0 +1,24 @@
+#include <sstream>
+
+cin>>t;
+string sp;
+getline(cin,sp);
+
+string s;
+getline(cin,s);
+istringstream s1(s);
+
+string word,oye;
+	    
+while(getline(s1,word,' '))
+{
+	v.push_back(word);
+}
+
+//start end start2 result function
+transform(v[j].begin(),v[j].end(),v[j].begin(),::tolower);
+
+transform (foo.begin(), foo.end(), bar.begin(), foo.begin(),plus<int>());
+
+//copy
+copy ( myints, myints+7, myvector.begin() );

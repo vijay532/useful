@@ -1,0 +1,73 @@
+ll minsegment(ll input[],ll start,ll end,ll segment[],ll current,ll n)
+{
+	if(start==end)
+	{
+		if(start<n)
+			segment[current] = input[start];
+		return 0;
+	}
+	
+	ll mid = (start+end)/2;
+	
+	minSegment(input,start,mid,segment,(2*current)+1);
+    minSegment(input,mid+1,end,segment,(2*current)+2);
+    
+    segment[current] = min(segment[(2*current)+1],segment[(2*current)+2]);
+}
+
+ll maxsegment(ll input[],ll start,ll end,ll segment[],ll current)
+{
+    if(start==end)
+    {
+		if(start<n)
+			segment[current] = input[start];
+		return 0;
+    }
+    
+    ll mid = (start+end)/2;
+  
+    maxSegment(input,start,mid,segment,(2*current)+1);
+    maxSegment(input,mid+1,end,segment,(2*current)+2);
+    
+    segment[current] = max(segment[(2*current)+1],segment[(2*current)+2]);
+}
+
+
+ll getMin(ll start,ll end,ll qstart,ll qend,ll segment[],ll current)
+{
+    ll mid = (start+end)/2;
+    
+    if(qstart<=start&&qend>=end)
+        return segment[current];
+    
+    if(qstart>end||qend<start)
+        return MAX;
+    
+    return min(getMin(start,mid,qstart,qend,segment,(2*current)+1),getMin(mid+1,end,qstart,qend,segment,(2*current)+2));
+}
+
+
+ll getMax(ll start,ll end,ll qstart,ll qend,ll segment[],ll current)
+{
+    ll mid = (start+end)/2;
+    
+    if(qstart<=start&&qend>=end)
+        return segment[current];
+    
+    if(qstart>end||qend<start)
+        return 0;
+        
+    return max(getMax(start,mid,qstart,qend,segment,(2*current)+1),getMax(mid+1,end,qstart,qend,segment,(2*current)+2));
+}
+
+//inside main function
+
+x = ceil(log2(n));
+size =(2*(pow(2,x)))-1;
+long long segmax[size];
+long long segmin[size];
+fill_n(segmax,size,0);
+fill_n(segmin,size,0);
+ans = 0;
+minsegment(a,0,n-1,segmin,0,n);
+maxsegment(a,0,n-1,segmax,0,n);

@@ -1,0 +1,26 @@
+ll knapsack(ll value[],ll weight[],ll totalWeight,ll n)
+{
+
+	ll table[n+1][totalWeight+1],i,j;
+	
+	for(i=0;i<=n;i++)
+		table[i][0] = 0;
+	
+	for(i=0;i<=totalWeight;i++)
+		table[0][i] = 0;
+	
+	//note : value[] and weight[] are 0 index based unlike table
+	
+	for(i=1;i<=n;i++)
+	{
+		for(j=1;j<=totalWeight;j++)
+		{
+			if(j<weight[i-1])
+				table[i][j] = table[i-1][j];
+			else	
+				table[i][j] = max(table[i-1][j],table[i-1][j-weight[i-1]]+value[i-1]);
+		}
+	}
+	
+	return table[n][totalWeight];
+}

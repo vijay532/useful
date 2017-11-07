@@ -1,0 +1,50 @@
+bool hasSubsetSum(ll a[],ll sum,ll n)
+{
+  bool subsetTable[n+1][sum+1];
+  ll i,j;
+  /*Table is something like this:
+    |0|1|2|3|....|sum
+  -  T F F F F F ...
+  -  
+  2  T     the sums as columns
+  -        the numbers we have as rows
+  3  .
+  -  
+  8  .
+  -  
+  1  .
+     
+     */
+  
+  //if sum is 0 there can be an empty set to satisfy the condition
+  for(i=0;i<=n;i++)
+  {
+    subsetTable[i][0] = true;
+  }
+  
+  //this will come in use..
+  for(i=1;i<=sum;i++)
+  {
+    subsetTable[0][i] = false;
+  }
+  
+  for(i=1;i<=n;i++)
+  {
+    for(j=1;j<=sum;j++)
+    {
+      //wherever a[] is involved but i-1 because it has n elements and not n+1
+      if(j<a[i-1])
+      {
+      //definitely not included in set
+      subsetTable[i][j] = subsetTable[i-1][j]; 
+      }
+      else
+      {
+      //two possibilities - include it or don't include it
+      subsetTable[i][j] = subsetTable[i-1][j]||subsetTable[i-1][j-a[i-1]];
+      }
+    }
+  }
+  
+  return subsetTable[n][sum];
+}

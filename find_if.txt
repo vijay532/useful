@@ -1,0 +1,1 @@
+auto itx= find_if(v[two].begin(),v[two].end(),[&one](const pair<long long, long long>& p){ return p.first == one; });

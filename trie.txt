@@ -1,0 +1,56 @@
+typedef struct Trie
+{
+    map <char,Trie*> m;
+    bool end;
+    
+    Trie()
+    {
+        end = false;
+    }
+}Trie;
+ 
+void insert(Trie *node,string s)
+{
+    ll i;
+    
+    for(i=0;i<s.size();i++)
+    {
+        if((node->m.find(s[i]))==node->m.end())
+        {
+            node->m[s[i]] = new Trie();
+        }
+        node = node->m[s[i]];
+    }
+    node->end = true;
+}
+ 
+ll search(Trie *node,string s)
+{
+    ll i;
+    
+    for(i=0;i<s.size();i++)
+    {
+        if((node->m.find(s[i]))==node->m.end())
+        {
+            break;
+        }
+        node = node->m[s[i]];
+    }
+    
+    return i;
+}
+
+//main function
+Trie *root = new Trie();
+insert(root,s);
+index = search(root,*it);
+
+if(index==s.size())
+{
+    flag=1;
+    break;
+}
+else
+{
+    filters.insert(s.substr(0,index+1));
+}
