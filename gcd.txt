@@ -4,3 +4,7 @@ ll gcd(ll a, ll b)
 		return a;
 	return gcd(b,a%b);
 }
+
+#include<algorithm>
+f=__gcd(a,b);
+cout<<f<<" ";
