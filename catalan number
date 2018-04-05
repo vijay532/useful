@@ -1,0 +1,25 @@
+#include <iostream>
+using namespace std;
+int fac(int n)
+{
+  if(n<=1)
+  {
+    return 1;
+  }
+  else
+  {
+    return n*fac(n-1);
+  }
+}
+int main()
+{
+  
+  int n,i,j,m;
+  cin>>j;
+  while(j--)
+  {
+    cin>>n;
+    m=fac(2*n)/(fac(n+1)*fac(n));
+    cout<<m<<endl;
+  }
+}
